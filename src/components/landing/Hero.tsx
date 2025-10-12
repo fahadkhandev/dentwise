@@ -109,7 +109,7 @@ function Hero() {
                                             </span>
                                         </div>
                                         <p className="text-sm text-muted-foreground">
-                                            Trusted by{' '}
+                                            Trusted by
                                             <span className="font-semibold text-foreground">
                                                 1,200+ patients
                                             </span>
