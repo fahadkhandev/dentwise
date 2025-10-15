@@ -29,7 +29,7 @@ model User{
 
   @@map("users")
 }
-model Docter {
+model Doctor {
   id          String     @id @default(cuid())
   name        String
   email       String     @unique
@@ -65,7 +65,7 @@ model Appointment{
 
   //relationships
   user   User   @relation(fields: [userId], references: [id] ,onDelete: Cascade)
-  doctor Docter @relation(fields: [doctorId], references: [id] ,onDelete: Cascade)
+  doctor Doctor @relation(fields: [doctorId], references: [id] ,onDelete: Cascade)
 
   @@map("appointments")
 }
