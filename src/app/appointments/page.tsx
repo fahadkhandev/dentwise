@@ -6,7 +6,10 @@ import DoctorSelectionStep from '@/components/appointments/DoctorSelectionStep'
 import ProgressSteps from '@/components/appointments/ProgressSteps'
 import TimeSelectionStep from '@/components/appointments/TimeSelectionStep'
 import Navbar from '@/components/Navbar'
-import { useBookAppointment } from '@/hooks/use-appointment'
+import {
+    useBookAppointment,
+    useUserAppointments,
+} from '@/hooks/use-appointment'
 
 import { APPOINTMENT_TYPES } from '@/lib/utils'
 import { format } from 'date-fns'
@@ -26,7 +29,7 @@ function AppointmentsPage() {
     const [bookedAppointment, setBookedAppointment] = useState<any>(null)
 
     const bookAppointmentMutation = useBookAppointment()
-    // const { data: userAppointments = [] } = useUserAppointments()
+    const { data: userAppointments = [] } = useUserAppointments()
 
     const handleSelectDentist = (dentistId: string) => {
         setSelectedDentistId(dentistId)
@@ -177,7 +180,7 @@ function AppointmentsPage() {
             )}
 
             {/* SHOW EXISTING APPOINTMENTS FOR THE CURRENT USER */}
-            {/* {userAppointments.length > 0 && (
+            {userAppointments.length > 0 && (
                 <div className="mb-8 max-w-7xl mx-auto px-6 py-8">
                     <h2 className="text-xl font-semibold mb-4">
                         Your Upcoming Appointments
@@ -221,7 +224,7 @@ function AppointmentsPage() {
                         ))}
                     </div>
                 </div>
-            )} */}
+            )}
         </>
     )
 }
