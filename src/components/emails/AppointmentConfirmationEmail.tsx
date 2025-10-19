@@ -35,14 +35,7 @@ function AppointmentConfirmationEmail({
             <Body style={main}>
                 <Container style={container}>
                     <Section style={logoContainer}>
-                        <Img
-                            src="https://i.ibb.co.com/tRy6cC2/logo.png"
-                            width="50"
-                            height="50"
-                            alt="DentWise"
-                            style={logo}
-                        />
-                        <Text style={logoText}>DentWise</Text>
+                        <Text style={logoText}>🦷 DentWise</Text>
                     </Section>
 
                     <Heading style={h1}>Appointment Confirmed! 🦷</Heading>
