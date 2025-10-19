@@ -34,7 +34,7 @@ export function AppointmentConfirmationModal({
 }: AppointmentConfirmationModalProps) {
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-md max-h-[85vh] overflow-y-auto rounded-xl p-6">
                 <DialogHeader className="text-center space-y-4">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                         <CheckCircleIcon className="h-8 w-8 text-primary" />
@@ -45,22 +45,20 @@ export function AppointmentConfirmationModal({
                     </DialogTitle>
 
                     <DialogDescription className="text-center text-muted-foreground">
-                        Your appointment has been successfully booked
+                        Your appointment has been successfully booked.
                     </DialogDescription>
                 </DialogHeader>
 
                 <div className="space-y-6">
                     {/* Email Notification Section */}
                     <div className="flex flex-col items-center space-y-3">
-                        <div className="relative">
-                            <Image
-                                src="/email-sent.png"
-                                alt="Email sent"
-                                width={120}
-                                height={120}
-                                className="mx-auto"
-                            />
-                        </div>
+                        <Image
+                            src="/email-sent.png"
+                            alt="Email sent"
+                            width={120}
+                            height={120}
+                            className="mx-auto"
+                        />
 
                         <div className="text-center space-y-1">
                             <div className="flex items-center justify-center gap-2 text-sm font-medium text-primary">
