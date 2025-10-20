@@ -8,7 +8,7 @@ async function AdminPage() {
     //if user not loggedIN
     if (!user) redirect('/')
 
-    const adminEmail = process.env.ADMIN_EMAIL
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
     const userEmail = user.emailAddresses[0]?.emailAddress
 
     //user is not admin
