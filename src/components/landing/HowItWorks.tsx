@@ -118,7 +118,7 @@ function HowItWorks() {
                     <SignUpButton mode="modal">
                         <Button
                             size="lg"
-                            className="bg-gradient-to-r from-primary to-primary/70 text-white font-semibold shadow-lg hover:shadow-primary/25 hover:scale-105 transition-all"
+                            className="bg-gradient-to-r from-primary to-primary/70 text-primary-foreground font-semibold shadow-lg hover:shadow-primary/25 hover:scale-105 transition-all"
                         >
                             <ArrowRightIcon className="mr-2 size-5" />
                             Get started now
