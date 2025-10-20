@@ -1,7 +1,13 @@
 'use client'
 
 import { UserButton, useUser } from '@clerk/nextjs'
-import { CalendarIcon, CrownIcon, HomeIcon, MicIcon } from 'lucide-react'
+import {
+    CalendarIcon,
+    CrownIcon,
+    HomeIcon,
+    MicIcon,
+    SettingsIcon,
+} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -9,6 +15,10 @@ import { usePathname } from 'next/navigation'
 function Navbar() {
     const { user } = useUser()
     const pathname = usePathname()
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
+    const userEmail = user?.emailAddresses[0]?.emailAddress
+
+    const isAdmin = userEmail === adminEmail
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-2 border-b border-border/50 bg-background/80 backdrop-blur-md h-16">
@@ -74,15 +84,34 @@ function Navbar() {
                             <CrownIcon className="w-4 h-4" />
                             <span className="hidden md:inline">Pro</span>
                         </Link>
+                        {isAdmin && (
+                            <Link
+                                href="/admin"
+                                className={`flex items-center gap-2 transition-colors hover:text-foreground ${
+                                    pathname === '/admin'
+                                        ? 'text-foreground'
+                                        : 'text-muted-foreground'
+                                }`}
+                            >
+                                <SettingsIcon className="w-4 h-4" />
+                                <span className="hidden md:inline">Admin</span>
+                            </Link>
+                        )}
                     </div>
                 </div>
 
                 {/* RIGHT SECTION */}
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-3">
-                        <div className="hidden lg:flex flex-col items-end">
-                            <span className="text-sm font-medium text-foreground">
+                        <div className="hidden lg:flex flex-col items-end text-right">
+                            <span className="text-sm font-medium text-foreground flex items-center gap-1">
                                 {user?.firstName} {user?.lastName}
+                                {isAdmin && (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold text-white bg-primary rounded-full">
+                                        <SettingsIcon className="w-3 h-3" />{' '}
+                                        Admin
+                                    </span>
+                                )}
                             </span>
                             <span className="text-xs text-muted-foreground">
                                 {user?.emailAddresses?.[0]?.emailAddress}
