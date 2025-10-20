@@ -8,22 +8,31 @@ import Footer from '@/components/landing/Footer'
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { syncUser } from '@/lib/actions/users'
+import FadeInWhenVisible from '@/components/landing/FadeInWhenVisible'
 
 export default async function Home() {
     const user = await currentUser()
-
     await syncUser()
-    //redirect auth user to dashboard
     if (user) redirect('/dashboard')
 
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <Hero />
-            <HowItWorks />
-            <WhatToAsk />
-            <PricingSection />
-            <CTA />
+            <FadeInWhenVisible>
+                <Hero />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible>
+                <HowItWorks />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible>
+                <WhatToAsk />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible>
+                <PricingSection />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible>
+                <CTA />
+            </FadeInWhenVisible>
             <Footer />
         </div>
     )

@@ -34,7 +34,10 @@ export function AppointmentConfirmationModal({
 }: AppointmentConfirmationModalProps) {
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-md max-h-[85vh] overflow-y-auto rounded-xl p-6">
+            <DialogContent
+                className="sm:max-w-md max-h-[85vh] overflow-y-auto rounded-xl p-6 
+    [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
                 <DialogHeader className="text-center space-y-4">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                         <CheckCircleIcon className="h-8 w-8 text-primary" />
